@@ -1,9 +1,9 @@
 Hi! My name is Jongbin Baek
 ====================================================================================================================================
 
-I am a Software engineer.
+I am a Junior Software engineer.
 
-* 🌍  I'm based in California
+* 🌍  I'm based in Seoul, South Korea
 * ✉️  You can contact me at [jongbinny98@gmail.com](mailto:jongbinny98@gmail.com)
 * 🤝  I'm open to collaborating on interesting projects
 
