@@ -15,19 +15,6 @@ LANGUAGE_ALIASES = {
     "Dockerfile": "Docker",
     "YAML": "Kubernetes",
 }
-PREFERRED_LANGUAGES = [
-    "C",
-    "Python",
-    "C++",
-    "Java",
-    "Kotlin",
-    "Flutter",
-    "Docker",
-    "Kubernetes",
-    "HTML",
-    "Makefile",
-    "Shell",
-]
 
 
 def fetch_json(url, token):
@@ -223,17 +210,6 @@ def main():
             "#fb923c",
         ]
         sorted_langs = sorted(totals.items(), key=lambda item: item[1], reverse=True)
-        if PREFERRED_LANGUAGES:
-            preferred = [
-                (lang, totals[lang])
-                for lang in PREFERRED_LANGUAGES
-                if lang in totals
-            ]
-            preferred_set = {lang for lang, _ in preferred}
-            remainder = [
-                item for item in sorted_langs if item[0] not in preferred_set
-            ]
-            sorted_langs = preferred + remainder
         top_langs = sorted_langs[: args.top]
         other_bytes = sum(value for _, value in sorted_langs[args.top :])
 
