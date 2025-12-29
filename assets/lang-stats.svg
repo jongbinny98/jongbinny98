@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" role="img" aria-label="Languages stats">
+<style>
+  .title { font: 600 18px "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif; fill: #111827; }
+  .label { font: 500 13px "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif; fill: #1f2937; }
+  .muted { fill: #6b7280; }
+</style>
+<rect x="0.5" y="0.5" width="719" height="219" rx="14" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="28" y="42" class="title">Languages</text>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#f3f4f6" stroke-width="18"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#2563eb" stroke-width="18" stroke-dasharray="345.61 106.78" stroke-dashoffset="-0.00" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#10b981" stroke-width="18" stroke-dasharray="43.83 408.56" stroke-dashoffset="-345.61" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="31.10 421.29" stroke-dashoffset="-389.44" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#ef4444" stroke-width="18" stroke-dasharray="24.42 427.97" stroke-dashoffset="-420.54" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#8b5cf6" stroke-width="18" stroke-dasharray="3.66 448.73" stroke-dashoffset="-444.96" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#14b8a6" stroke-width="18" stroke-dasharray="1.51 450.88" stroke-dashoffset="-448.62" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#f97316" stroke-width="18" stroke-dasharray="1.22 451.17" stroke-dashoffset="-450.12" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#22c55e" stroke-width="18" stroke-dasharray="0.97 451.42" stroke-dashoffset="-451.35" transform="rotate(-90 560 120)"/>
+<circle cx="560" cy="120" r="72" fill="none" stroke="#9ca3af" stroke-width="18" stroke-dasharray="0.07 452.31" stroke-dashoffset="-452.31" transform="rotate(-90 560 120)"/>
+<circle cx="30" cy="74" r="5" fill="#2563eb"/>
+<text x="44" y="78" class="label">Jupyter Notebook 76.40%</text>
+<circle cx="30" cy="96" r="5" fill="#10b981"/>
+<text x="44" y="100" class="label">C++ 9.69%</text>
+<circle cx="30" cy="118" r="5" fill="#f59e0b"/>
+<text x="44" y="122" class="label">C 6.87%</text>
+<circle cx="30" cy="140" r="5" fill="#ef4444"/>
+<text x="44" y="144" class="label">Python 5.40%</text>
+<circle cx="30" cy="162" r="5" fill="#8b5cf6"/>
+<text x="44" y="166" class="label">Makefile 0.81%</text>
+<circle cx="30" cy="184" r="5" fill="#14b8a6"/>
+<text x="44" y="188" class="label">HTML 0.33%</text>
+<circle cx="30" cy="206" r="5" fill="#f97316"/>
+<text x="44" y="210" class="label">Shell 0.27%</text>
+<circle cx="30" cy="228" r="5" fill="#22c55e"/>
+<text x="44" y="232" class="label">JavaScript 0.21%</text>
+<circle cx="30" cy="250" r="5" fill="#9ca3af"/>
+<text x="44" y="254" class="label">Other 0.02%</text>
+</svg>
