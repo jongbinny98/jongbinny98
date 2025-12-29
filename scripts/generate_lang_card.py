@@ -87,22 +87,25 @@ def build_svg(items, total_bytes, width=820, height=None):
         f'viewBox="0 0 {width} {height}" role="img" aria-label="{title} stats">',
         "<defs>",
         '  <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">',
-        '    <stop offset="0%" stop-color="#ffffff"/>',
-        '    <stop offset="100%" stop-color="#f8fafc"/>',
+        '    <stop offset="0%" stop-color="#0b0f16"/>',
+        '    <stop offset="100%" stop-color="#111827"/>',
         "  </linearGradient>",
         '  <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">',
-        '    <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>',
+        '    <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>',
+        "  </filter>",
+        '  <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">',
+        '    <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#0ea5e9" flood-opacity="0.12"/>',
         "  </filter>",
         "</defs>",
         "<style>",
-        '  .title { font: 600 18px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #0f172a; }',
-        '  .subtitle { font: 500 12px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #64748b; }',
-        '  .label { font: 500 13px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #1f2937; }',
-        '  .value { font: 600 22px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #0f172a; }',
+        '  .title { font: 600 18px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #e2e8f0; }',
+        '  .subtitle { font: 500 12px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #94a3b8; }',
+        '  .label { font: 500 13px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #e5e7eb; }',
+        '  .value { font: 600 22px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #f8fafc; }',
         '  .muted { fill: #94a3b8; }',
         "</style>",
         f'<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="16" '
-        'fill="url(#bg)" stroke="#e2e8f0" filter="url(#shadow)"/>',
+        'fill="url(#bg)" stroke="#1f2937" filter="url(#shadow)"/>',
         f'<text x="{title_x}" y="{title_y}" class="title">{title}</text>',
         f'<text x="{title_x}" y="{title_y + 18}" class="subtitle">{subtitle}</text>',
     ]
@@ -120,7 +123,15 @@ def build_svg(items, total_bytes, width=820, height=None):
 
     svg.append(
         f'<circle cx="{donut_cx}" cy="{donut_cy}" r="{donut_radius}" fill="none" '
-        f'stroke="#e2e8f0" stroke-width="{ring_width}"/>'
+        f'stroke="#1f2937" stroke-width="{ring_width}"/>'
+    )
+    svg.append(
+        f'<circle cx="{donut_cx}" cy="{donut_cy}" r="{donut_radius + 10}" fill="none" '
+        f'stroke="#0f172a" stroke-width="1" opacity="0.6"/>'
+    )
+    svg.append(
+        f'<line x1="{title_x}" y1="{list_start_y - 16}" x2="{width - 28}" '
+        f'y2="{list_start_y - 16}" stroke="#1f2937" stroke-width="1"/>'
     )
 
     offset = 0.0
@@ -133,7 +144,8 @@ def build_svg(items, total_bytes, width=820, height=None):
             f'<circle cx="{donut_cx}" cy="{donut_cy}" r="{donut_radius}" fill="none" '
             f'stroke="{item["color"]}" stroke-width="{ring_width}" '
             f'stroke-dasharray="{length:.2f} {circumference - length:.2f}" '
-            f'stroke-dashoffset="{-offset:.2f}" transform="rotate(-90 {donut_cx} {donut_cy})"/>'
+            f'stroke-dashoffset="{-offset:.2f}" transform="rotate(-90 {donut_cx} {donut_cy})" '
+            f'stroke-linecap="round" filter="url(#softGlow)"/>'
         )
         offset += length
 
@@ -177,14 +189,14 @@ def main():
         svg = build_svg([], total_bytes)
     else:
         palette = [
-            "#2563eb",
-            "#0f766e",
+            "#3b82f6",
+            "#22c55e",
             "#f59e0b",
-            "#e11d48",
-            "#7c3aed",
-            "#0284c7",
-            "#16a34a",
-            "#f97316",
+            "#f43f5e",
+            "#8b5cf6",
+            "#38bdf8",
+            "#10b981",
+            "#fb923c",
         ]
         sorted_langs = sorted(totals.items(), key=lambda item: item[1], reverse=True)
         top_langs = sorted_langs[: args.top]
