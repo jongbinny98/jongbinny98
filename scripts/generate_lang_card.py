@@ -7,6 +7,27 @@ import urllib.request
 
 
 API_BASE = "https://api.github.com"
+EXCLUDED_LANGUAGES = {
+    "Jupyter Notebook",
+}
+LANGUAGE_ALIASES = {
+    "Dart": "Flutter",
+    "Dockerfile": "Docker",
+    "YAML": "Kubernetes",
+}
+PREFERRED_LANGUAGES = [
+    "C",
+    "Python",
+    "C++",
+    "Java",
+    "Kotlin",
+    "Flutter",
+    "Docker",
+    "Kubernetes",
+    "HTML",
+    "Makefile",
+    "Shell",
+]
 
 
 def fetch_json(url, token):
@@ -49,7 +70,10 @@ def collect_language_totals(username, token):
         except Exception:
             continue
         for language, size in languages.items():
-            totals[language] = totals.get(language, 0) + size
+            normalized = LANGUAGE_ALIASES.get(language, language)
+            if normalized in EXCLUDED_LANGUAGES:
+                continue
+            totals[normalized] = totals.get(normalized, 0) + size
     return totals
 
 
@@ -199,6 +223,17 @@ def main():
             "#fb923c",
         ]
         sorted_langs = sorted(totals.items(), key=lambda item: item[1], reverse=True)
+        if PREFERRED_LANGUAGES:
+            preferred = [
+                (lang, totals[lang])
+                for lang in PREFERRED_LANGUAGES
+                if lang in totals
+            ]
+            preferred_set = {lang for lang, _ in preferred}
+            remainder = [
+                item for item in sorted_langs if item[0] not in preferred_set
+            ]
+            sorted_langs = preferred + remainder
         top_langs = sorted_langs[: args.top]
         other_bytes = sum(value for _, value in sorted_langs[args.top :])
 
