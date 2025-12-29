@@ -29,12 +29,12 @@ jobs:
 
       - name: Commit and push
         run: |
-          if git diff --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/lang-stats.svg
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
           git commit -m "Update language stats card"
           git push
