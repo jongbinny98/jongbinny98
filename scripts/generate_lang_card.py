@@ -54,31 +54,57 @@ def collect_language_totals(username, token):
 
 
 def format_percent(value):
-    return f"{value:.2f}%"
+    return f"{value:.1f}%"
 
 
-def build_svg(items, total_bytes, width=720, height=220):
-    title = "Languages"
+def truncate_label(value, max_len=16):
+    if len(value) <= max_len:
+        return value
+    if max_len <= 3:
+        return value[:max_len]
+    return f"{value[: max_len - 3]}..."
+
+
+def build_svg(items, total_bytes, width=820, height=None):
+    title = "Language Mix"
+    subtitle = "Auto-updated daily"
     title_x = 28
     title_y = 42
 
-    donut_cx = 560
-    donut_cy = 120
-    donut_radius = 72
-    ring_width = 18
+    line_height = 22
+    list_start_y = 92
+    list_height = list_start_y + len(items) * line_height
+    height = height or max(230, list_height + 24)
+
+    donut_cx = width - 170
+    donut_cy = int(height / 2) + 4
+    donut_radius = 78
+    ring_width = 16
     circumference = 2 * math.pi * donut_radius
 
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
         f'viewBox="0 0 {width} {height}" role="img" aria-label="{title} stats">',
-        '<style>',
-        '  .title { font: 600 18px "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif; fill: #111827; }',
-        '  .label { font: 500 13px "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif; fill: #1f2937; }',
-        '  .muted { fill: #6b7280; }',
+        "<defs>",
+        '  <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">',
+        '    <stop offset="0%" stop-color="#ffffff"/>',
+        '    <stop offset="100%" stop-color="#f8fafc"/>',
+        "  </linearGradient>",
+        '  <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">',
+        '    <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>',
+        "  </filter>",
+        "</defs>",
+        "<style>",
+        '  .title { font: 600 18px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #0f172a; }',
+        '  .subtitle { font: 500 12px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #64748b; }',
+        '  .label { font: 500 13px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #1f2937; }',
+        '  .value { font: 600 22px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #0f172a; }',
+        '  .muted { fill: #94a3b8; }',
         "</style>",
-        f'<rect x="0.5" y="0.5" width="{width-1}" height="{height-1}" rx="14" '
-        'fill="#ffffff" stroke="#e5e7eb"/>',
+        f'<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="16" '
+        'fill="url(#bg)" stroke="#e2e8f0" filter="url(#shadow)"/>',
         f'<text x="{title_x}" y="{title_y}" class="title">{title}</text>',
+        f'<text x="{title_x}" y="{title_y + 18}" class="subtitle">{subtitle}</text>',
     ]
 
     if not items or total_bytes == 0:
@@ -88,14 +114,13 @@ def build_svg(items, total_bytes, width=720, height=220):
         svg.append("</svg>")
         return "\n".join(svg)
 
-    list_start_y = 78
-    line_height = 22
-    dot_x = 30
-    text_x = 44
+    dot_x = 32
+    text_x = 48
+    value_x = 320
 
     svg.append(
         f'<circle cx="{donut_cx}" cy="{donut_cy}" r="{donut_radius}" fill="none" '
-        f'stroke="#f3f4f6" stroke-width="{ring_width}"/>'
+        f'stroke="#e2e8f0" stroke-width="{ring_width}"/>'
     )
 
     offset = 0.0
@@ -116,9 +141,22 @@ def build_svg(items, total_bytes, width=720, height=220):
         y = list_start_y + idx * line_height
         svg.append(f'<circle cx="{dot_x}" cy="{y - 4}" r="5" fill="{item["color"]}"/>')
         svg.append(
-            f'<text x="{text_x}" y="{y}" class="label">{item["name"]} '
+            f'<text x="{text_x}" y="{y}" class="label">{truncate_label(item["name"])}</text>'
+        )
+        svg.append(
+            f'<text x="{value_x}" y="{y}" class="label muted" text-anchor="end">'
             f'{format_percent(item["percent"])}</text>'
         )
+
+    top = items[0]
+    center_value = format_percent(top["percent"])
+    svg.append(
+        f'<text x="{donut_cx}" y="{donut_cy - 4}" class="value" text-anchor="middle">{center_value}</text>'
+    )
+    svg.append(
+        f'<text x="{donut_cx}" y="{donut_cy + 16}" class="label muted" text-anchor="middle">'
+        f'{truncate_label(top["name"], 14)}</text>'
+    )
 
     svg.append("</svg>")
     return "\n".join(svg)
@@ -140,13 +178,13 @@ def main():
     else:
         palette = [
             "#2563eb",
-            "#10b981",
+            "#0f766e",
             "#f59e0b",
-            "#ef4444",
-            "#8b5cf6",
-            "#14b8a6",
+            "#e11d48",
+            "#7c3aed",
+            "#0284c7",
+            "#16a34a",
             "#f97316",
-            "#22c55e",
         ]
         sorted_langs = sorted(totals.items(), key=lambda item: item[1], reverse=True)
         top_langs = sorted_langs[: args.top]
