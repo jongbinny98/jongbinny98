@@ -1,37 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" role="img" aria-label="Languages stats">
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="314" viewBox="0 0 820 314" role="img" aria-label="Language Mix stats">
+<defs>
+  <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0%" stop-color="#ffffff"/>
+    <stop offset="100%" stop-color="#f8fafc"/>
+  </linearGradient>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+    <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+  </filter>
+</defs>
 <style>
-  .title { font: 600 18px "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif; fill: #111827; }
-  .label { font: 500 13px "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif; fill: #1f2937; }
-  .muted { fill: #6b7280; }
+  .title { font: 600 18px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #0f172a; }
+  .subtitle { font: 500 12px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #64748b; }
+  .label { font: 500 13px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #1f2937; }
+  .value { font: 600 22px "Source Sans 3", "Segoe UI", Tahoma, sans-serif; fill: #0f172a; }
+  .muted { fill: #94a3b8; }
 </style>
-<rect x="0.5" y="0.5" width="719" height="219" rx="14" fill="#ffffff" stroke="#e5e7eb"/>
-<text x="28" y="42" class="title">Languages</text>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#f3f4f6" stroke-width="18"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#2563eb" stroke-width="18" stroke-dasharray="345.61 106.78" stroke-dashoffset="-0.00" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#10b981" stroke-width="18" stroke-dasharray="43.83 408.56" stroke-dashoffset="-345.61" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="31.10 421.29" stroke-dashoffset="-389.44" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#ef4444" stroke-width="18" stroke-dasharray="24.42 427.97" stroke-dashoffset="-420.54" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#8b5cf6" stroke-width="18" stroke-dasharray="3.66 448.73" stroke-dashoffset="-444.96" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#14b8a6" stroke-width="18" stroke-dasharray="1.51 450.88" stroke-dashoffset="-448.62" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#f97316" stroke-width="18" stroke-dasharray="1.22 451.17" stroke-dashoffset="-450.12" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#22c55e" stroke-width="18" stroke-dasharray="0.97 451.42" stroke-dashoffset="-451.35" transform="rotate(-90 560 120)"/>
-<circle cx="560" cy="120" r="72" fill="none" stroke="#9ca3af" stroke-width="18" stroke-dasharray="0.07 452.31" stroke-dashoffset="-452.31" transform="rotate(-90 560 120)"/>
-<circle cx="30" cy="74" r="5" fill="#2563eb"/>
-<text x="44" y="78" class="label">Jupyter Notebook 76.40%</text>
-<circle cx="30" cy="96" r="5" fill="#10b981"/>
-<text x="44" y="100" class="label">C++ 9.69%</text>
-<circle cx="30" cy="118" r="5" fill="#f59e0b"/>
-<text x="44" y="122" class="label">C 6.87%</text>
-<circle cx="30" cy="140" r="5" fill="#ef4444"/>
-<text x="44" y="144" class="label">Python 5.40%</text>
-<circle cx="30" cy="162" r="5" fill="#8b5cf6"/>
-<text x="44" y="166" class="label">Makefile 0.81%</text>
-<circle cx="30" cy="184" r="5" fill="#14b8a6"/>
-<text x="44" y="188" class="label">HTML 0.33%</text>
-<circle cx="30" cy="206" r="5" fill="#f97316"/>
-<text x="44" y="210" class="label">Shell 0.27%</text>
-<circle cx="30" cy="228" r="5" fill="#22c55e"/>
-<text x="44" y="232" class="label">JavaScript 0.21%</text>
-<circle cx="30" cy="250" r="5" fill="#9ca3af"/>
-<text x="44" y="254" class="label">Other 0.02%</text>
+<rect x="1" y="1" width="818" height="312" rx="16" fill="url(#bg)" stroke="#e2e8f0" filter="url(#shadow)"/>
+<text x="28" y="42" class="title">Language Mix</text>
+<text x="28" y="60" class="subtitle">Auto-updated daily</text>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#e2e8f0" stroke-width="16"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#2563eb" stroke-width="16" stroke-dasharray="374.10 115.99" stroke-dashoffset="-0.00" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#0f766e" stroke-width="16" stroke-dasharray="47.45 442.64" stroke-dashoffset="-374.10" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#f59e0b" stroke-width="16" stroke-dasharray="33.66 456.43" stroke-dashoffset="-421.55" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#e11d48" stroke-width="16" stroke-dasharray="26.84 463.25" stroke-dashoffset="-455.21" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#7c3aed" stroke-width="16" stroke-dasharray="3.96 486.13" stroke-dashoffset="-482.04" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#0284c7" stroke-width="16" stroke-dasharray="1.63 488.46" stroke-dashoffset="-486.00" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#16a34a" stroke-width="16" stroke-dasharray="1.32 488.76" stroke-dashoffset="-487.64" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#f97316" stroke-width="16" stroke-dasharray="1.05 489.04" stroke-dashoffset="-488.96" transform="rotate(-90 650 161)"/>
+<circle cx="650" cy="161" r="78" fill="none" stroke="#9ca3af" stroke-width="16" stroke-dasharray="0.08 490.01" stroke-dashoffset="-490.01" transform="rotate(-90 650 161)"/>
+<circle cx="32" cy="88" r="5" fill="#2563eb"/>
+<text x="48" y="92" class="label">Jupyter Notebook</text>
+<text x="320" y="92" class="label muted" text-anchor="end">76.3%</text>
+<circle cx="32" cy="110" r="5" fill="#0f766e"/>
+<text x="48" y="114" class="label">C++</text>
+<text x="320" y="114" class="label muted" text-anchor="end">9.7%</text>
+<circle cx="32" cy="132" r="5" fill="#f59e0b"/>
+<text x="48" y="136" class="label">C</text>
+<text x="320" y="136" class="label muted" text-anchor="end">6.9%</text>
+<circle cx="32" cy="154" r="5" fill="#e11d48"/>
+<text x="48" y="158" class="label">Python</text>
+<text x="320" y="158" class="label muted" text-anchor="end">5.5%</text>
+<circle cx="32" cy="176" r="5" fill="#7c3aed"/>
+<text x="48" y="180" class="label">Makefile</text>
+<text x="320" y="180" class="label muted" text-anchor="end">0.8%</text>
+<circle cx="32" cy="198" r="5" fill="#0284c7"/>
+<text x="48" y="202" class="label">HTML</text>
+<text x="320" y="202" class="label muted" text-anchor="end">0.3%</text>
+<circle cx="32" cy="220" r="5" fill="#16a34a"/>
+<text x="48" y="224" class="label">Shell</text>
+<text x="320" y="224" class="label muted" text-anchor="end">0.3%</text>
+<circle cx="32" cy="242" r="5" fill="#f97316"/>
+<text x="48" y="246" class="label">JavaScript</text>
+<text x="320" y="246" class="label muted" text-anchor="end">0.2%</text>
+<circle cx="32" cy="264" r="5" fill="#9ca3af"/>
+<text x="48" y="268" class="label">Other</text>
+<text x="320" y="268" class="label muted" text-anchor="end">0.0%</text>
+<text x="650" y="157" class="value" text-anchor="middle">76.3%</text>
+<text x="650" y="177" class="label muted" text-anchor="middle">Jupyter Not...</text>
 </svg>
